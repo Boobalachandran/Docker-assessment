@@ -1,0 +1,16 @@
+version: '3'
+
+services:
+  db:
+    image: my-mysql
+    ports:
+      - "3307:3306"
+    restart: always
+
+  web:
+    build: webapp/
+    ports:
+      - "80:80"
+    depends_on:
+      - db
+    restart: always
